@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tscfbench"
+version = "1.8.0"
+description = "Turn a before/after time-series question into a counterfactual chart, a reproducible report, and an AI-agent-ready handoff"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "tscfbench contributors"}
+]
+keywords = ["causal-inference", "counterfactual", "time-series", "benchmark", "synthetic-control", "agent", "mcp"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "tabulate>=0.9",
+]
+
+[project.optional-dependencies]
+viz = [
+  "matplotlib>=3.8",
+]
+starter = [
+  "matplotlib>=3.8",
+]
+panel = [
+  "pysyncon",
+  "scpi_pkg",
+  "SyntheticControlMethods",
+]
+impact = [
+  "tfp-causalimpact",
+  "cimpact",
+  "CausalPy",
+]
+forecast = [
+  "darts",
+  "statsforecast",
+  "pytorch-forecasting",
+]
+research = [
+  "pysyncon",
+  "scpi_pkg",
+  "SyntheticControlMethods",
+  "tfp-causalimpact",
+  "cimpact",
+  "CausalPy",
+]
+all = [
+  "pysyncon",
+  "scpi_pkg",
+  "SyntheticControlMethods",
+  "tfp-causalimpact",
+  "cimpact",
+  "CausalPy",
+  "darts",
+  "statsforecast",
+  "pytorch-forecasting",
+]
+docs = [
+  "mkdocs>=1.6",
+  "mkdocs-material>=9.5",
+]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=5",
+  "build>=1.2",
+  "twine>=5",
+  "matplotlib>=3.8",
+]
+
+[project.scripts]
+tscfbench = "tscfbench.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests*", "build*", "dist_build*", "*.egg-info*"]
+
+[tool.setuptools.package-data]
+"tscfbench.datasets" = ["data/*.csv"]

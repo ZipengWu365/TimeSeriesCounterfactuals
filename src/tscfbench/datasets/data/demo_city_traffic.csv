@@ -1,0 +1,661 @@
+date,city,traffic_index
+2024-01-01,Harbor City,80.609
+2024-01-02,Harbor City,81.121
+2024-01-03,Harbor City,85.547
+2024-01-04,Harbor City,83.837
+2024-01-05,Harbor City,74.656
+2024-01-06,Harbor City,73.863
+2024-01-07,Harbor City,77.569
+2024-01-08,Harbor City,79.881
+2024-01-09,Harbor City,83.681
+2024-01-10,Harbor City,82.854
+2024-01-11,Harbor City,84.228
+2024-01-12,Harbor City,80.627
+2024-01-13,Harbor City,77.113
+2024-01-14,Harbor City,80.081
+2024-01-15,Harbor City,81.963
+2024-01-16,Harbor City,82.51
+2024-01-17,Harbor City,85.812
+2024-01-18,Harbor City,81.065
+2024-01-19,Harbor City,81.342
+2024-01-20,Harbor City,77.395
+2024-01-21,Harbor City,77.971
+2024-01-22,Harbor City,80.179
+2024-01-23,Harbor City,87.187
+2024-01-24,Harbor City,85.279
+2024-01-25,Harbor City,82.64
+2024-01-26,Harbor City,79.395
+2024-01-27,Harbor City,79.073
+2024-01-28,Harbor City,79.585
+2024-01-29,Harbor City,82.881
+2024-01-30,Harbor City,86.117
+2024-01-31,Harbor City,90.385
+2024-02-01,Harbor City,83.198
+2024-02-02,Harbor City,79.589
+2024-02-03,Harbor City,76.895
+2024-02-04,Harbor City,80.6
+2024-02-05,Harbor City,84.827
+2024-02-06,Harbor City,85.542
+2024-02-07,Harbor City,84.935
+2024-02-08,Harbor City,82.876
+2024-02-09,Harbor City,82.428
+2024-02-10,Harbor City,80.523
+2024-02-11,Harbor City,80.968
+2024-02-12,Harbor City,81.752
+2024-02-13,Harbor City,86.748
+2024-02-14,Harbor City,87.362
+2024-02-15,Harbor City,85.476
+2024-02-16,Harbor City,83.383
+2024-02-17,Harbor City,79.997
+2024-02-18,Harbor City,81.753
+2024-02-19,Harbor City,83.731
+2024-02-20,Harbor City,87.375
+2024-02-21,Harbor City,88.905
+2024-02-22,Harbor City,82.638
+2024-02-23,Harbor City,81.515
+2024-02-24,Harbor City,79.123
+2024-02-25,Harbor City,79.632
+2024-02-26,Harbor City,83.56
+2024-02-27,Harbor City,90.301
+2024-02-28,Harbor City,86.425
+2024-02-29,Harbor City,88.002
+2024-03-01,Harbor City,79.302
+2024-03-02,Harbor City,79.908
+2024-03-03,Harbor City,81.749
+2024-03-04,Harbor City,85.796
+2024-03-05,Harbor City,89.247
+2024-03-06,Harbor City,84.257
+2024-03-07,Harbor City,79.609
+2024-03-08,Harbor City,75.712
+2024-03-09,Harbor City,75.989
+2024-03-10,Harbor City,74.463
+2024-03-11,Harbor City,75.223
+2024-03-12,Harbor City,78.435
+2024-03-13,Harbor City,79.436
+2024-03-14,Harbor City,79.906
+2024-03-15,Harbor City,75.526
+2024-03-16,Harbor City,74.259
+2024-03-17,Harbor City,72.596
+2024-03-18,Harbor City,76.696
+2024-03-19,Harbor City,80.558
+2024-03-20,Harbor City,79.261
+2024-03-21,Harbor City,78.43
+2024-03-22,Harbor City,72.522
+2024-03-23,Harbor City,70.756
+2024-03-24,Harbor City,71.292
+2024-03-25,Harbor City,72.592
+2024-03-26,Harbor City,78.885
+2024-03-27,Harbor City,77.546
+2024-03-28,Harbor City,76.146
+2024-03-29,Harbor City,73.412
+2024-03-30,Harbor City,70.98
+2024-03-31,Harbor City,71.991
+2024-04-01,Harbor City,73.391
+2024-04-02,Harbor City,75.669
+2024-04-03,Harbor City,76.93
+2024-04-04,Harbor City,71.351
+2024-04-05,Harbor City,68.161
+2024-04-06,Harbor City,66.046
+2024-04-07,Harbor City,67.27
+2024-04-08,Harbor City,72.992
+2024-04-09,Harbor City,73.31
+2024-04-10,Harbor City,74.937
+2024-04-11,Harbor City,75.929
+2024-04-12,Harbor City,68.947
+2024-04-13,Harbor City,68.771
+2024-04-14,Harbor City,66.002
+2024-04-15,Harbor City,70.386
+2024-04-16,Harbor City,71.825
+2024-04-17,Harbor City,73.62
+2024-04-18,Harbor City,73.615
+2024-04-19,Harbor City,64.81
+2024-01-01,Lakeside,83.869
+2024-01-02,Lakeside,86.691
+2024-01-03,Lakeside,85.888
+2024-01-04,Lakeside,82.109
+2024-01-05,Lakeside,81.762
+2024-01-06,Lakeside,78.483
+2024-01-07,Lakeside,80.868
+2024-01-08,Lakeside,83.662
+2024-01-09,Lakeside,90.038
+2024-01-10,Lakeside,87.217
+2024-01-11,Lakeside,83.572
+2024-01-12,Lakeside,82.595
+2024-01-13,Lakeside,80.601
+2024-01-14,Lakeside,83.74
+2024-01-15,Lakeside,85.908
+2024-01-16,Lakeside,88.167
+2024-01-17,Lakeside,91.241
+2024-01-18,Lakeside,83.861
+2024-01-19,Lakeside,81.576
+2024-01-20,Lakeside,78.927
+2024-01-21,Lakeside,80.861
+2024-01-22,Lakeside,82.103
+2024-01-23,Lakeside,89.342
+2024-01-24,Lakeside,88.488
+2024-01-25,Lakeside,83.915
+2024-01-26,Lakeside,81.443
+2024-01-27,Lakeside,82.026
+2024-01-28,Lakeside,83.936
+2024-01-29,Lakeside,89.469
+2024-01-30,Lakeside,94.518
+2024-01-31,Lakeside,90.38
+2024-02-01,Lakeside,85.497
+2024-02-02,Lakeside,79.829
+2024-02-03,Lakeside,82.553
+2024-02-04,Lakeside,81.252
+2024-02-05,Lakeside,85.263
+2024-02-06,Lakeside,88.085
+2024-02-07,Lakeside,89.889
+2024-02-08,Lakeside,90.226
+2024-02-09,Lakeside,85.026
+2024-02-10,Lakeside,82.319
+2024-02-11,Lakeside,81.426
+2024-02-12,Lakeside,83.363
+2024-02-13,Lakeside,88.956
+2024-02-14,Lakeside,90.682
+2024-02-15,Lakeside,92.249
+2024-02-16,Lakeside,85.591
+2024-02-17,Lakeside,85.22
+2024-02-18,Lakeside,83.117
+2024-02-19,Lakeside,84.961
+2024-02-20,Lakeside,88.617
+2024-02-21,Lakeside,89.957
+2024-02-22,Lakeside,93.589
+2024-02-23,Lakeside,84.307
+2024-02-24,Lakeside,85.551
+2024-02-25,Lakeside,82.929
+2024-02-26,Lakeside,89.813
+2024-02-27,Lakeside,91.936
+2024-02-28,Lakeside,91.713
+2024-02-29,Lakeside,89.869
+2024-03-01,Lakeside,85.259
+2024-03-02,Lakeside,85.384
+2024-03-03,Lakeside,84.443
+2024-03-04,Lakeside,86.118
+2024-03-05,Lakeside,89.229
+2024-03-06,Lakeside,92.991
+2024-03-07,Lakeside,93.728
+2024-03-08,Lakeside,87.507
+2024-03-09,Lakeside,84.874
+2024-03-10,Lakeside,86.544
+2024-03-11,Lakeside,91.8
+2024-03-12,Lakeside,92.842
+2024-03-13,Lakeside,92.442
+2024-03-14,Lakeside,93.401
+2024-03-15,Lakeside,88.663
+2024-03-16,Lakeside,88.801
+2024-03-17,Lakeside,86.957
+2024-03-18,Lakeside,87.357
+2024-03-19,Lakeside,90.286
+2024-03-20,Lakeside,97.185
+2024-03-21,Lakeside,95.254
+2024-03-22,Lakeside,88.065
+2024-03-23,Lakeside,85.582
+2024-03-24,Lakeside,90.132
+2024-03-25,Lakeside,88.211
+2024-03-26,Lakeside,91.851
+2024-03-27,Lakeside,95.788
+2024-03-28,Lakeside,91.637
+2024-03-29,Lakeside,89.033
+2024-03-30,Lakeside,86.641
+2024-03-31,Lakeside,88.503
+2024-04-01,Lakeside,93.859
+2024-04-02,Lakeside,94.441
+2024-04-03,Lakeside,96.408
+2024-04-04,Lakeside,88.944
+2024-04-05,Lakeside,89.565
+2024-04-06,Lakeside,85.9
+2024-04-07,Lakeside,86.009
+2024-04-08,Lakeside,89.906
+2024-04-09,Lakeside,94.21
+2024-04-10,Lakeside,97.571
+2024-04-11,Lakeside,91.011
+2024-04-12,Lakeside,90.342
+2024-04-13,Lakeside,87.237
+2024-04-14,Lakeside,88.41
+2024-04-15,Lakeside,94.287
+2024-04-16,Lakeside,96.573
+2024-04-17,Lakeside,99.033
+2024-04-18,Lakeside,93.973
+2024-04-19,Lakeside,89.508
+2024-01-01,Northport,85.552
+2024-01-02,Northport,89.716
+2024-01-03,Northport,90.46
+2024-01-04,Northport,85.877
+2024-01-05,Northport,84.859
+2024-01-06,Northport,83.074
+2024-01-07,Northport,88.528
+2024-01-08,Northport,90.477
+2024-01-09,Northport,88.248
+2024-01-10,Northport,90.255
+2024-01-11,Northport,85.843
+2024-01-12,Northport,84.22
+2024-01-13,Northport,83.972
+2024-01-14,Northport,86.629
+2024-01-15,Northport,85.989
+2024-01-16,Northport,89.37
+2024-01-17,Northport,87.259
+2024-01-18,Northport,89.168
+2024-01-19,Northport,84.001
+2024-01-20,Northport,83.006
+2024-01-21,Northport,83.187
+2024-01-22,Northport,87.983
+2024-01-23,Northport,87.887
+2024-01-24,Northport,89.344
+2024-01-25,Northport,94.475
+2024-01-26,Northport,84.274
+2024-01-27,Northport,82.595
+2024-01-28,Northport,89.338
+2024-01-29,Northport,94.705
+2024-01-30,Northport,89.783
+2024-01-31,Northport,92.265
+2024-02-01,Northport,91.624
+2024-02-02,Northport,91.03
+2024-02-03,Northport,83.539
+2024-02-04,Northport,85.898
+2024-02-05,Northport,91.173
+2024-02-06,Northport,93.719
+2024-02-07,Northport,92.973
+2024-02-08,Northport,91.397
+2024-02-09,Northport,85.547
+2024-02-10,Northport,85.76
+2024-02-11,Northport,86.579
+2024-02-12,Northport,90.807
+2024-02-13,Northport,92.463
+2024-02-14,Northport,95.392
+2024-02-15,Northport,94.414
+2024-02-16,Northport,89.331
+2024-02-17,Northport,87.663
+2024-02-18,Northport,87.942
+2024-02-19,Northport,91.066
+2024-02-20,Northport,92.854
+2024-02-21,Northport,95.806
+2024-02-22,Northport,92.917
+2024-02-23,Northport,93.931
+2024-02-24,Northport,90.83
+2024-02-25,Northport,89.331
+2024-02-26,Northport,90.264
+2024-02-27,Northport,92.796
+2024-02-28,Northport,98.279
+2024-02-29,Northport,94.361
+2024-03-01,Northport,91.428
+2024-03-02,Northport,84.918
+2024-03-03,Northport,91.138
+2024-03-04,Northport,93.423
+2024-03-05,Northport,93.524
+2024-03-06,Northport,95.677
+2024-03-07,Northport,95.087
+2024-03-08,Northport,91.297
+2024-03-09,Northport,88.547
+2024-03-10,Northport,89.8
+2024-03-11,Northport,92.734
+2024-03-12,Northport,96.773
+2024-03-13,Northport,100.287
+2024-03-14,Northport,90.15
+2024-03-15,Northport,91.442
+2024-03-16,Northport,90.208
+2024-03-17,Northport,91.323
+2024-03-18,Northport,93.218
+2024-03-19,Northport,93.679
+2024-03-20,Northport,98.724
+2024-03-21,Northport,99.462
+2024-03-22,Northport,89.572
+2024-03-23,Northport,92.306
+2024-03-24,Northport,90.797
+2024-03-25,Northport,94.562
+2024-03-26,Northport,95.81
+2024-03-27,Northport,98.123
+2024-03-28,Northport,99.331
+2024-03-29,Northport,94.528
+2024-03-30,Northport,94.767
+2024-03-31,Northport,94.533
+2024-04-01,Northport,96.287
+2024-04-02,Northport,102.127
+2024-04-03,Northport,100.393
+2024-04-04,Northport,99.111
+2024-04-05,Northport,93.494
+2024-04-06,Northport,92.159
+2024-04-07,Northport,91.507
+2024-04-08,Northport,98.112
+2024-04-09,Northport,97.007
+2024-04-10,Northport,101.804
+2024-04-11,Northport,97.797
+2024-04-12,Northport,97.153
+2024-04-13,Northport,94.252
+2024-04-14,Northport,97.267
+2024-04-15,Northport,98.318
+2024-04-16,Northport,96.943
+2024-04-17,Northport,100.829
+2024-04-18,Northport,96.558
+2024-04-19,Northport,94.498
+2024-01-01,Riverton,92.022
+2024-01-02,Riverton,93.521
+2024-01-03,Riverton,91.739
+2024-01-04,Riverton,89.063
+2024-01-05,Riverton,87.804
+2024-01-06,Riverton,83.259
+2024-01-07,Riverton,85.241
+2024-01-08,Riverton,90.453
+2024-01-09,Riverton,95.385
+2024-01-10,Riverton,95.183
+2024-01-11,Riverton,87.337
+2024-01-12,Riverton,89.176
+2024-01-13,Riverton,86.665
+2024-01-14,Riverton,88.24
+2024-01-15,Riverton,93.89
+2024-01-16,Riverton,89.777
+2024-01-17,Riverton,93.612
+2024-01-18,Riverton,93.93
+2024-01-19,Riverton,86.232
+2024-01-20,Riverton,90.302
+2024-01-21,Riverton,88.977
+2024-01-22,Riverton,93.179
+2024-01-23,Riverton,93.59
+2024-01-24,Riverton,97.25
+2024-01-25,Riverton,95.714
+2024-01-26,Riverton,90.69
+2024-01-27,Riverton,88.647
+2024-01-28,Riverton,89.61
+2024-01-29,Riverton,90.588
+2024-01-30,Riverton,95.266
+2024-01-31,Riverton,96.147
+2024-02-01,Riverton,95.173
+2024-02-02,Riverton,93.053
+2024-02-03,Riverton,86.89
+2024-02-04,Riverton,89.648
+2024-02-05,Riverton,96.107
+2024-02-06,Riverton,94.902
+2024-02-07,Riverton,95.636
+2024-02-08,Riverton,95.639
+2024-02-09,Riverton,93.571
+2024-02-10,Riverton,89.859
+2024-02-11,Riverton,93.385
+2024-02-12,Riverton,95.686
+2024-02-13,Riverton,98.902
+2024-02-14,Riverton,99.217
+2024-02-15,Riverton,100.719
+2024-02-16,Riverton,92.3
+2024-02-17,Riverton,86.658
+2024-02-18,Riverton,94.764
+2024-02-19,Riverton,93.886
+2024-02-20,Riverton,98.263
+2024-02-21,Riverton,101.557
+2024-02-22,Riverton,93.688
+2024-02-23,Riverton,91.036
+2024-02-24,Riverton,88.291
+2024-02-25,Riverton,90.796
+2024-02-26,Riverton,96.509
+2024-02-27,Riverton,99.924
+2024-02-28,Riverton,100.319
+2024-02-29,Riverton,94.895
+2024-03-01,Riverton,89.748
+2024-03-02,Riverton,92.431
+2024-03-03,Riverton,92.27
+2024-03-04,Riverton,97.378
+2024-03-05,Riverton,101.108
+2024-03-06,Riverton,100.872
+2024-03-07,Riverton,100.07
+2024-03-08,Riverton,95.655
+2024-03-09,Riverton,94.211
+2024-03-10,Riverton,92.633
+2024-03-11,Riverton,96.928
+2024-03-12,Riverton,100.927
+2024-03-13,Riverton,103.065
+2024-03-14,Riverton,98.591
+2024-03-15,Riverton,97.068
+2024-03-16,Riverton,93.448
+2024-03-17,Riverton,94.636
+2024-03-18,Riverton,99.775
+2024-03-19,Riverton,97.376
+2024-03-20,Riverton,99.66
+2024-03-21,Riverton,97.243
+2024-03-22,Riverton,92.187
+2024-03-23,Riverton,93.452
+2024-03-24,Riverton,97.198
+2024-03-25,Riverton,98.375
+2024-03-26,Riverton,102.586
+2024-03-27,Riverton,105.26
+2024-03-28,Riverton,103.691
+2024-03-29,Riverton,97.545
+2024-03-30,Riverton,98.345
+2024-03-31,Riverton,96.712
+2024-04-01,Riverton,98.099
+2024-04-02,Riverton,101.831
+2024-04-03,Riverton,100.949
+2024-04-04,Riverton,100.088
+2024-04-05,Riverton,97.796
+2024-04-06,Riverton,98.073
+2024-04-07,Riverton,100.798
+2024-04-08,Riverton,97.838
+2024-04-09,Riverton,104.634
+2024-04-10,Riverton,102.658
+2024-04-11,Riverton,103.643
+2024-04-12,Riverton,99.079
+2024-04-13,Riverton,93.633
+2024-04-14,Riverton,100.042
+2024-04-15,Riverton,100.221
+2024-04-16,Riverton,103.609
+2024-04-17,Riverton,103.428
+2024-04-18,Riverton,102.214
+2024-04-19,Riverton,101.025
+2024-01-01,Sunnyvale,91.622
+2024-01-02,Sunnyvale,95.918
+2024-01-03,Sunnyvale,96.89
+2024-01-04,Sunnyvale,96.777
+2024-01-05,Sunnyvale,90.112
+2024-01-06,Sunnyvale,85.814
+2024-01-07,Sunnyvale,91.807
+2024-01-08,Sunnyvale,92.271
+2024-01-09,Sunnyvale,98.424
+2024-01-10,Sunnyvale,97.867
+2024-01-11,Sunnyvale,94.807
+2024-01-12,Sunnyvale,92.429
+2024-01-13,Sunnyvale,93.603
+2024-01-14,Sunnyvale,94.761
+2024-01-15,Sunnyvale,94.006
+2024-01-16,Sunnyvale,97.449
+2024-01-17,Sunnyvale,100.187
+2024-01-18,Sunnyvale,94.312
+2024-01-19,Sunnyvale,93.332
+2024-01-20,Sunnyvale,90.583
+2024-01-21,Sunnyvale,92.168
+2024-01-22,Sunnyvale,93.135
+2024-01-23,Sunnyvale,94.883
+2024-01-24,Sunnyvale,94.822
+2024-01-25,Sunnyvale,94.702
+2024-01-26,Sunnyvale,92.682
+2024-01-27,Sunnyvale,90.982
+2024-01-28,Sunnyvale,96.349
+2024-01-29,Sunnyvale,97.947
+2024-01-30,Sunnyvale,97.072
+2024-01-31,Sunnyvale,100.597
+2024-02-01,Sunnyvale,97.057
+2024-02-02,Sunnyvale,93.964
+2024-02-03,Sunnyvale,92.873
+2024-02-04,Sunnyvale,94.646
+2024-02-05,Sunnyvale,95.99
+2024-02-06,Sunnyvale,102.057
+2024-02-07,Sunnyvale,98.551
+2024-02-08,Sunnyvale,98.817
+2024-02-09,Sunnyvale,100.662
+2024-02-10,Sunnyvale,93.882
+2024-02-11,Sunnyvale,97.208
+2024-02-12,Sunnyvale,97.786
+2024-02-13,Sunnyvale,102.025
+2024-02-14,Sunnyvale,101.656
+2024-02-15,Sunnyvale,99.397
+2024-02-16,Sunnyvale,94.842
+2024-02-17,Sunnyvale,95.23
+2024-02-18,Sunnyvale,93.573
+2024-02-19,Sunnyvale,99.868
+2024-02-20,Sunnyvale,103.968
+2024-02-21,Sunnyvale,103.436
+2024-02-22,Sunnyvale,100.1
+2024-02-23,Sunnyvale,98.242
+2024-02-24,Sunnyvale,94.686
+2024-02-25,Sunnyvale,98.08
+2024-02-26,Sunnyvale,95.807
+2024-02-27,Sunnyvale,102.06
+2024-02-28,Sunnyvale,99.655
+2024-02-29,Sunnyvale,98.616
+2024-03-01,Sunnyvale,100.996
+2024-03-02,Sunnyvale,98.028
+2024-03-03,Sunnyvale,95.704
+2024-03-04,Sunnyvale,97.399
+2024-03-05,Sunnyvale,97.736
+2024-03-06,Sunnyvale,103.483
+2024-03-07,Sunnyvale,107.38
+2024-03-08,Sunnyvale,100.072
+2024-03-09,Sunnyvale,96.052
+2024-03-10,Sunnyvale,99.007
+2024-03-11,Sunnyvale,98.216
+2024-03-12,Sunnyvale,104.004
+2024-03-13,Sunnyvale,105.703
+2024-03-14,Sunnyvale,103.301
+2024-03-15,Sunnyvale,101.717
+2024-03-16,Sunnyvale,98.794
+2024-03-17,Sunnyvale,100.347
+2024-03-18,Sunnyvale,100.895
+2024-03-19,Sunnyvale,107.328
+2024-03-20,Sunnyvale,109.696
+2024-03-21,Sunnyvale,102.467
+2024-03-22,Sunnyvale,99.294
+2024-03-23,Sunnyvale,101.71
+2024-03-24,Sunnyvale,99.562
+2024-03-25,Sunnyvale,106.013
+2024-03-26,Sunnyvale,105.581
+2024-03-27,Sunnyvale,110.282
+2024-03-28,Sunnyvale,105.604
+2024-03-29,Sunnyvale,102.52
+2024-03-30,Sunnyvale,103.102
+2024-03-31,Sunnyvale,100.155
+2024-04-01,Sunnyvale,102.257
+2024-04-02,Sunnyvale,106.502
+2024-04-03,Sunnyvale,109.21
+2024-04-04,Sunnyvale,103.143
+2024-04-05,Sunnyvale,104.212
+2024-04-06,Sunnyvale,99.829
+2024-04-07,Sunnyvale,104.108
+2024-04-08,Sunnyvale,100.284
+2024-04-09,Sunnyvale,106.76
+2024-04-10,Sunnyvale,105.866
+2024-04-11,Sunnyvale,105.556
+2024-04-12,Sunnyvale,104.366
+2024-04-13,Sunnyvale,101.481
+2024-04-14,Sunnyvale,102.239
+2024-04-15,Sunnyvale,105.688
+2024-04-16,Sunnyvale,109.674
+2024-04-17,Sunnyvale,108.156
+2024-04-18,Sunnyvale,109.556
+2024-04-19,Sunnyvale,106.13
+2024-01-01,Westfield,95.77
+2024-01-02,Westfield,99.389
+2024-01-03,Westfield,99.789
+2024-01-04,Westfield,101.251
+2024-01-05,Westfield,93.684
+2024-01-06,Westfield,91.228
+2024-01-07,Westfield,91.256
+2024-01-08,Westfield,93.974
+2024-01-09,Westfield,96.826
+2024-01-10,Westfield,98.458
+2024-01-11,Westfield,98.078
+2024-01-12,Westfield,95.565
+2024-01-13,Westfield,92.983
+2024-01-14,Westfield,92.271
+2024-01-15,Westfield,98.878
+2024-01-16,Westfield,101.832
+2024-01-17,Westfield,100.955
+2024-01-18,Westfield,97.952
+2024-01-19,Westfield,97.032
+2024-01-20,Westfield,94.296
+2024-01-21,Westfield,91.944
+2024-01-22,Westfield,97.98
+2024-01-23,Westfield,101.916
+2024-01-24,Westfield,100.513
+2024-01-25,Westfield,100.677
+2024-01-26,Westfield,94.065
+2024-01-27,Westfield,97.631
+2024-01-28,Westfield,98.375
+2024-01-29,Westfield,98.65
+2024-01-30,Westfield,103.158
+2024-01-31,Westfield,98.532
+2024-02-01,Westfield,99.023
+2024-02-02,Westfield,97.426
+2024-02-03,Westfield,93.853
+2024-02-04,Westfield,98.347
+2024-02-05,Westfield,104.188
+2024-02-06,Westfield,101.116
+2024-02-07,Westfield,102.715
+2024-02-08,Westfield,102.845
+2024-02-09,Westfield,102.274
+2024-02-10,Westfield,94.591
+2024-02-11,Westfield,98.455
+2024-02-12,Westfield,104.875
+2024-02-13,Westfield,101.205
+2024-02-14,Westfield,102.867
+2024-02-15,Westfield,102.566
+2024-02-16,Westfield,99.049
+2024-02-17,Westfield,99.7
+2024-02-18,Westfield,99.479
+2024-02-19,Westfield,98.721
+2024-02-20,Westfield,106.578
+2024-02-21,Westfield,105.313
+2024-02-22,Westfield,107.001
+2024-02-23,Westfield,99.874
+2024-02-24,Westfield,97.84
+2024-02-25,Westfield,101.117
+2024-02-26,Westfield,104.836
+2024-02-27,Westfield,107.482
+2024-02-28,Westfield,104.135
+2024-02-29,Westfield,106.567
+2024-03-01,Westfield,100.1
+2024-03-02,Westfield,100.623
+2024-03-03,Westfield,98.226
+2024-03-04,Westfield,105.241
+2024-03-05,Westfield,106.011
+2024-03-06,Westfield,105.98
+2024-03-07,Westfield,107.957
+2024-03-08,Westfield,103.69
+2024-03-09,Westfield,99.963
+2024-03-10,Westfield,105.014
+2024-03-11,Westfield,104.506
+2024-03-12,Westfield,108.728
+2024-03-13,Westfield,110.122
+2024-03-14,Westfield,106.329
+2024-03-15,Westfield,105.188
+2024-03-16,Westfield,101.163
+2024-03-17,Westfield,102.327
+2024-03-18,Westfield,109.152
+2024-03-19,Westfield,107.621
+2024-03-20,Westfield,105.797
+2024-03-21,Westfield,111.829
+2024-03-22,Westfield,110.383
+2024-03-23,Westfield,102.458
+2024-03-24,Westfield,100.316
+2024-03-25,Westfield,106.844
+2024-03-26,Westfield,110.168
+2024-03-27,Westfield,111.282
+2024-03-28,Westfield,107.419
+2024-03-29,Westfield,107.482
+2024-03-30,Westfield,105.356
+2024-03-31,Westfield,102.239
+2024-04-01,Westfield,109.902
+2024-04-02,Westfield,115.885
+2024-04-03,Westfield,113.044
+2024-04-04,Westfield,110.01
+2024-04-05,Westfield,107.078
+2024-04-06,Westfield,106.577
+2024-04-07,Westfield,102.806
+2024-04-08,Westfield,109.871
+2024-04-09,Westfield,112.037
+2024-04-10,Westfield,117.435
+2024-04-11,Westfield,111.375
+2024-04-12,Westfield,111.736
+2024-04-13,Westfield,104.177
+2024-04-14,Westfield,108.48
+2024-04-15,Westfield,111.22
+2024-04-16,Westfield,112.119
+2024-04-17,Westfield,115.133
+2024-04-18,Westfield,115.187
+2024-04-19,Westfield,108.792

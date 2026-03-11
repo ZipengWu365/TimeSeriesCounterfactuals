@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+title: tscfbench
+message: "If you use tscfbench in research, please cite the software and mention the benchmark protocol version."
+type: software
+authors:
+  - family-names: Contributors
+    given-names: tscfbench
+affiliation: Open-source contributors
+version: 1.1.0
+date-released: 2026-03-07
+license: MIT
+abstract: >-
+  Research-first benchmark toolkit for time-series counterfactual inference with canonical studies,
+  public-interest event cases, release-facing documentation surfaces, and agent-native research workflows.

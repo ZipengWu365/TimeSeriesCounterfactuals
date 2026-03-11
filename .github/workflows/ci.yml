@@ -1,0 +1,151 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+      - name: Run tests
+        run: pytest -q
+
+  onboarding-editable-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Fresh venv starter install + quickstart
+        run: |
+          python -m venv .venv-smoke
+          . .venv-smoke/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[starter]"
+          python -m tscfbench quickstart
+          python -m tscfbench doctor
+          test -f tscfbench_quickstart/canonical_quickstart_report.md
+          test -f tscfbench_quickstart/generated_files.json
+
+  onboarding-wheel-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build wheel
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build
+          python -m build --wheel
+      - name: Fresh venv wheel install + quickstart
+        run: |
+          python -m venv .venv-wheel
+          . .venv-wheel/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install dist/*.whl matplotlib
+          python -m tscfbench quickstart
+          python -m tscfbench doctor
+          test -f tscfbench_quickstart/canonical_quickstart_report.md
+          test -f tscfbench_quickstart/generated_files.json
+
+  canonical-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+      - name: Run canonical snapshot benchmark
+        run: |
+          python -m tscfbench make-canonical-spec --data-source snapshot --no-external -o canonical.json
+          python -m tscfbench run-canonical canonical.json -o canonical_results.json
+          python - <<'PY'
+          import json
+          payload = json.load(open('canonical_results.json'))
+          assert payload['summary']['cells'] >= 3
+          assert payload['summary']['ok'] >= 3
+          PY
+
+  install-smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python-version: "3.11"
+            package: pysyncon
+            import-name: pysyncon
+            allow-failure: false
+          - python-version: "3.11"
+            package: scpi_pkg
+            import-name: scpi_pkg
+            allow-failure: false
+          - python-version: "3.11"
+            package: tfp-causalimpact
+            import-name: causalimpact
+            allow-failure: false
+          - python-version: "3.11"
+            package: statsforecast
+            import-name: statsforecast
+            allow-failure: false
+          - python-version: "3.11"
+            package: CausalPy
+            import-name: causalpy
+            allow-failure: true
+          - python-version: "3.11"
+            package: cimpact
+            import-name: cimpact
+            allow-failure: true
+          - python-version: "3.11"
+            package: SyntheticControlMethods
+            import-name: SyntheticControlMethods
+            allow-failure: true
+          - python-version: "3.11"
+            package: darts
+            import-name: darts
+            allow-failure: true
+          - python-version: "3.11"
+            package: pytorch-forecasting
+            import-name: pytorch_forecasting
+            allow-failure: true
+    continue-on-error: ${{ matrix.allow-failure }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependency
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install ${{ matrix.package }}
+      - name: Import smoke test
+        run: |
+          python - <<'PY'
+          import importlib
+          import os
+          module_name = os.environ['IMPORT_NAME']
+          importlib.import_module(module_name)
+          print({'imported': module_name})
+          PY
+        env:
+          IMPORT_NAME: ${{ matrix.import-name }}

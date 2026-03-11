@@ -1,0 +1,13 @@
+demo_id,path,family,treated,intervention
+city-traffic,demo_city_traffic.csv,panel,Harbor City,2024-03-06
+product-launch,demo_product_launch.csv,impact,signups,2024-04-23
+heatwave-health,demo_heatwave_health.csv,impact,er_visits,2024-07-14
+electricity-shock,demo_electricity_shock.csv,panel,North Grid,2024-03-13
+climate-grid,demo_climate_grid.csv,panel,Coastal Grid,2024-08-11
+hospital-surge,demo_hospital_surge.csv,impact,icu_occupancy,2024-01-17
+github-stars,demo_github_stars.csv,impact,stars_new,2025-12-18
+repo-breakout,demo_repo_breakout.csv,impact,repo_stars_new,2025-12-18
+crypto-event,demo_crypto_event.csv,impact,btc_log_return,2023-12-15
+detector-downtime,demo_detector_downtime.csv,impact,uptime_pct,2024-05-18
+minimum-wage-employment,demo_minimum_wage_employment.csv,panel,Metro State,2024-08-04
+viral-attention,demo_viral_attention.csv,impact,attention_index,2025-10-14

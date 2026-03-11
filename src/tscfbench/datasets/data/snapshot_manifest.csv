@@ -1,0 +1,4 @@
+dataset_id,path,rows,kind,note
+german_reunification,german_reunification_snapshot.csv,308,snapshot,Synthetic CI-friendly snapshot matching canonical schema; use remote for the full study.
+california_prop99,california_prop99_snapshot.csv,248,snapshot,Synthetic CI-friendly snapshot matching canonical schema; use remote for the full study.
+basque_country,basque_country_snapshot.csv,301,snapshot,Synthetic CI-friendly snapshot matching canonical schema; use remote for the full study.
