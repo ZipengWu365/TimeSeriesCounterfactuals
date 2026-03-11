@@ -1,5 +1,8 @@
 site_name: tscfbench
 site_description: Counterfactual workflow toolkit for time-series questions
+site_url: https://zipengwu365.github.io/TimeSeriesCounterfactuals/
+repo_url: https://github.com/ZipengWu365/TimeSeriesCounterfactuals
+repo_name: ZipengWu365/TimeSeriesCounterfactuals
 nav:
   - Home: index.md
   - Quickstart: quickstart.md

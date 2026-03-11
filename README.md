@@ -1,10 +1,28 @@
-# tscfbench (v1.8.0)
+<p align="center">
+  <img src="docs/assets/hero_quickstart.svg" alt="tscfbench logo" width="112">
+</p>
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Starter install](https://img.shields.io/badge/starter-install%20tested-success)
-![Charts](https://img.shields.io/badge/output-chart--first-orange)
-![Agents](https://img.shields.io/badge/agents-ready-purple)
+<h1 align="center">tscfbench (v1.8.0)</h1>
+
+<p align="center">
+  <strong>Zipeng Wu</strong><br>
+  The University of Birmingham<br>
+  <a href="mailto:zxw365@student.bham.ac.uk">zxw365@student.bham.ac.uk</a>
+</p>
+
+<p align="center">
+  <img alt="Author" src="https://img.shields.io/badge/author-Zipeng%20Wu-1f6feb?style=flat-square&logo=github&logoColor=white">
+  <img alt="Affiliation" src="https://img.shields.io/badge/affiliation-The%20University%20of%20Birmingham-A1211B?style=flat-square&logo=googlescholar&logoColor=white">
+  <a href="mailto:zxw365@student.bham.ac.uk"><img alt="Contact" src="https://img.shields.io/badge/contact-zxw365%40student.bham.ac.uk-0A66C2?style=flat-square&logo=gmail&logoColor=white"></a>
+</p>
+
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/python-3.10%2B-blue?style=flat-square&logo=python&logoColor=white">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=flat-square&logo=open-source-initiative&logoColor=white">
+  <img alt="Starter install" src="https://img.shields.io/badge/starter-install%20tested-success?style=flat-square">
+  <img alt="Charts" src="https://img.shields.io/badge/output-chart--first-orange?style=flat-square">
+  <img alt="Agents" src="https://img.shields.io/badge/agents-ready-purple?style=flat-square">
+</p>
 
 **Turn a before/after time-series question into a counterfactual chart, a reproducible report, a share package, and an AI-agent-ready handoff.**
 
@@ -84,11 +102,11 @@ Use `starter` first. Promote to `minimal` or `research` only after the narrow pa
 
 ## Try now
 
-- `docs/try-now.md` — zero-install gallery / Colab-ready entry points
-- `docs/demo-gallery.md` — chart-first demos
-- `docs/showcase-gallery.md` — share cards and downloadable example outputs
-- `docs/plain-language-guide.md` — a non-jargon guide to counterfactual charts
-- `docs/installation.md` — source checkout, wheel install, and PyPI-ready notes
+- `docs/try-now.md`: zero-install gallery / Colab-ready entry points
+- `docs/demo-gallery.md`: chart-first demos
+- `docs/showcase-gallery.md`: share cards and downloadable example outputs
+- `docs/plain-language-guide.md`: a non-jargon guide to counterfactual charts
+- `docs/installation.md`: source checkout, wheel install, and PyPI-ready notes
 
 ## License
 

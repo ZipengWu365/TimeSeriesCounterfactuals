@@ -8,7 +8,7 @@
 
 **Turn a before/after time-series question into a counterfactual chart, a reproducible report, a share package, and an AI-agent-ready handoff.**
 
-![tscfbench quickstart hero](docs/assets/hero_quickstart.png)
+![tscfbench quickstart hero](assets/hero_quickstart.png)
 
 `tscfbench` is for the moment when a raw estimator is not enough: you want a chart, a report, a shareable package, and a machine-readable handoff under one reproducible spec.
 
@@ -48,9 +48,9 @@ PyPI-first installation is prepared in this release, but the package is not publ
 
 ## Demo-first showcase
 
-![Demo mosaic](docs/assets/demo_mosaic.png)
+![Demo mosaic](assets/demo_mosaic.png)
 
-<table><tr><td><img src="docs/assets/demo_repo_breakout_share_card.png" alt="repo breakout" width="260"></td><td><img src="docs/assets/demo_detector_downtime_share_card.png" alt="detector downtime" width="260"></td><td><img src="docs/assets/demo_hospital_surge_share_card.png" alt="hospital surge" width="260"></td></tr></table>
+<table><tr><td><img src="assets/demo_repo_breakout_share_card.png" alt="repo breakout" width="260"></td><td><img src="assets/demo_detector_downtime_share_card.png" alt="detector downtime" width="260"></td><td><img src="assets/demo_hospital_surge_share_card.png" alt="hospital surge" width="260"></td></tr></table>
 
 ```bash
 python -m tscfbench demo repo-breakout
