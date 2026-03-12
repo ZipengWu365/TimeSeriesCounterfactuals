@@ -12,6 +12,17 @@
 
 `tscfbench` is for the moment when a raw estimator is not enough: you want a chart, a report, a shareable package, and a machine-readable handoff under one reproducible spec.
 
+## Python-first quickstart
+
+```python
+from tscfbench import run_demo
+
+result = run_demo("city-traffic", output_dir="city_traffic_run")
+result["summary"]
+```
+
+Start here if the package is being read by a person rather than a shell script: import one function, run one demo, and inspect the summary while charts and reports are written to `city_traffic_run/`.
+
 ## When to use this instead of a single estimator package
 
 | If you need... | Use... |
@@ -20,7 +31,7 @@
 | One workflow surface across panel studies, event-style impact studies, demos, reports, and agent handoffs | `tscfbench` |
 | Something you can show a colleague or post online, not just model output | `tscfbench` |
 
-## 60-second quickstart
+## CLI quickstart
 
 ```bash
 python -m pip install -e ".[starter]"
@@ -28,16 +39,60 @@ python -m tscfbench quickstart
 python -m tscfbench doctor
 ```
 
-That path is the single recommended onboarding path in v1.8: built-in backends, bundled snapshot data, clean report generation in a fresh environment, and immediate chart/report/share assets.
+That path is the single recommended onboarding path when you want a fresh-environment smoke test with built-in backends, bundled snapshot data, and immediate chart/report/share assets.
 
-If you are installing from a release asset instead of a source checkout:
+## Use your own data
 
-```bash
-python -m pip install tscfbench-1.8.0-py3-none-any.whl matplotlib
-python -m tscfbench quickstart
+### Panel data
+
+```python
+import pandas as pd
+from tscfbench import run_panel_data
+
+df = pd.read_csv("my_panel.csv")
+result = run_panel_data(
+    df,
+    unit_col="city",
+    time_col="date",
+    y_col="traffic_index",
+    treated_unit="Harbor City",
+    intervention_t="2024-03-06",
+    output_dir="my_panel_run",
+)
+
+result["summary"]
 ```
 
-PyPI-first installation is prepared in this release, but the package is not published to PyPI from this environment.
+CLI equivalent:
+
+```bash
+python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
+```
+
+### Impact data
+
+```python
+import pandas as pd
+from tscfbench import run_impact_data
+
+df = pd.read_csv("my_impact.csv")
+result = run_impact_data(
+    df,
+    time_col="date",
+    y_col="signups",
+    x_cols=["peer_signups", "search_interest"],
+    intervention_t="2024-04-23",
+    output_dir="my_impact_run",
+)
+
+result["summary"]
+```
+
+CLI equivalent:
+
+```bash
+python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
+```
 
 ## What you get on the first run
 
@@ -45,51 +100,3 @@ PyPI-first installation is prepared in this release, but the package is not publ
 - A Markdown report that works in a clean environment.
 - Treated-vs-counterfactual, cumulative-impact, and share-card visuals.
 - A `summary.json` file plus generated-files metadata and a narrow next-step path.
-
-## Demo-first showcase
-
-![Demo mosaic](assets/demo_mosaic.png)
-
-<table><tr><td><img src="assets/demo_repo_breakout_share_card.png" alt="repo breakout" width="260"></td><td><img src="assets/demo_detector_downtime_share_card.png" alt="detector downtime" width="260"></td><td><img src="assets/demo_hospital_surge_share_card.png" alt="hospital surge" width="260"></td></tr></table>
-
-```bash
-python -m tscfbench demo repo-breakout
-python -m tscfbench demo detector-downtime
-python -m tscfbench demo hospital-surge
-python -m tscfbench demo minimum-wage-employment
-python -m tscfbench demo viral-attention
-```
-
-These are the five most internet-legible paths in the repo today: breakout attention, detector downtime, hospital pressure, wage-policy divergence, and viral-attention spikes.
-
-## Make something you can post online
-
-```bash
-python -m tscfbench make-share-package --demo-id repo-breakout
-python -m tscfbench make-share-package --demo-id detector-downtime
-```
-
-That command writes a share package with a chart, share card, report, summary JSON, citation block, and manifest.
-
-## Agent-first, but not agent-only
-
-You can use the package from CLI, notebooks, Python scripts, or tool-calling runtimes. For agent workflows, start with the smallest tool surface first.
-
-```bash
-python -m tscfbench export-openai-tools --profile starter -o openai_tools_starter.json
-python -m tscfbench list-tool-profiles
-```
-
-Use `starter` first. Promote to `minimal` or `research` only after the narrow path succeeds.
-
-## Try now
-
-- `docs/try-now.md` — zero-install gallery / Colab-ready entry points
-- `docs/demo-gallery.md` — chart-first demos
-- `docs/showcase-gallery.md` — share cards and downloadable example outputs
-- `docs/plain-language-guide.md` — a non-jargon guide to counterfactual charts
-- `docs/installation.md` — source checkout, wheel install, and PyPI-ready notes
-
-## License
-
-MIT

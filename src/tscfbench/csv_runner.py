@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Sequence
+from typing import Any, Dict, List, Sequence
 
 import numpy as np
 import pandas as pd
@@ -91,26 +91,28 @@ def _impact_report(case: ImpactCase, model_name: str, metrics: Dict[str, Any], s
     return "\n".join(lines)
 
 
-def run_csv_panel(
-    csv_path: str | Path,
+def _run_panel_data_impl(
+    df: pd.DataFrame,
     *,
+    dataset_id: str,
+    source: str,
     unit_col: str,
     time_col: str,
     y_col: str,
     treated_unit: Any,
     intervention_t: Any,
-    model: str = "simple_scm",
-    output_dir: str | Path = "tscfbench_csv_panel",
-    placebo_pre_rmspe_factor: float = 5.0,
-    min_pre_periods: int = 12,
-    max_time_placebos: int = 8,
-    title: str | None = None,
-    plot: bool = True,
-    takeaway: str | None = None,
+    model: str,
+    output_dir: str | Path,
+    placebo_pre_rmspe_factor: float,
+    min_pre_periods: int,
+    max_time_placebos: int,
+    title: str | None,
+    plot: bool,
+    takeaway: str | None,
 ) -> Dict[str, Any]:
     out_dir = Path(output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    df = _maybe_parse_time(_read_csv(csv_path), time_col)
+    df = _maybe_parse_time(df.copy(), time_col)
     intervention = _coerce_intervention(df, time_col, intervention_t)
     case = PanelCase(
         df=df,
@@ -119,7 +121,7 @@ def run_csv_panel(
         y_col=y_col,
         treated_unit=treated_unit,
         intervention_t=intervention,
-        metadata={"dataset_id": Path(csv_path).stem, "source": str(csv_path)},
+        metadata={"dataset_id": dataset_id, "source": source},
     )
     fitted = materialize_model(model)
     report = benchmark_panel(
@@ -137,7 +139,10 @@ def run_csv_panel(
     report_md = out_dir / "panel_report.md"
     prediction_csv = out_dir / "panel_prediction_frame.csv"
     report_md.write_text(render_panel_markdown(case, report), encoding="utf-8")
-    metrics_json.write_text(json.dumps({"metrics": report.metrics, "metadata": report.metadata}, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
+    metrics_json.write_text(
+        json.dumps({"metrics": report.metrics, "metadata": report.metadata}, indent=2, ensure_ascii=False, default=str),
+        encoding="utf-8",
+    )
     pred_df = report.prediction.to_frame(case.times, case.treated_series(), intervention_index=case.intervention_index)
     pred_df.to_csv(prediction_csv, index=False)
     artifacts = {
@@ -151,30 +156,233 @@ def run_csv_panel(
             report,
             output_dir=out_dir,
             stem="panel",
-            title=title or f"{Path(csv_path).stem}: treated vs counterfactual",
+            title=title or f"{dataset_id}: treated vs counterfactual",
             ylabel=y_col,
             takeaway=takeaway,
         )
         artifacts.update(visuals)
-    summary = _compact_summary({
-        "treated_unit": str(treated_unit),
-        "intervention_t": str(intervention),
-        "model": model,
-        "post_pre_rmspe_ratio": report.metrics.get("post_pre_rmspe_ratio"),
-        "cum_effect": report.metrics.get("cum_effect"),
-        "avg_effect": report.metrics.get("avg_effect"),
-        "space_placebo_pvalue": report.metrics.get("space_placebo_pvalue"),
-        "time_placebo_pvalue": report.metrics.get("time_placebo_pvalue"),
-    })
+    summary = _compact_summary(
+        {
+            "treated_unit": str(treated_unit),
+            "intervention_t": str(intervention),
+            "model": model,
+            "post_pre_rmspe_ratio": report.metrics.get("post_pre_rmspe_ratio"),
+            "cum_effect": report.metrics.get("cum_effect"),
+            "avg_effect": report.metrics.get("avg_effect"),
+            "space_placebo_pvalue": report.metrics.get("space_placebo_pvalue"),
+            "time_placebo_pvalue": report.metrics.get("time_placebo_pvalue"),
+        }
+    )
     return {
-        "kind": "csv_panel_run",
-        "csv_path": str(csv_path),
         "output_dir": str(out_dir),
         "summary": summary,
         "generated_files": artifacts,
         "next_command": "python -m tscfbench doctor",
+        "data_source": source,
     }
 
+
+def run_panel_data(
+    df: pd.DataFrame,
+    *,
+    unit_col: str,
+    time_col: str,
+    y_col: str,
+    treated_unit: Any,
+    intervention_t: Any,
+    model: str = "simple_scm",
+    output_dir: str | Path = "tscfbench_panel_run",
+    placebo_pre_rmspe_factor: float = 5.0,
+    min_pre_periods: int = 12,
+    max_time_placebos: int = 8,
+    title: str | None = None,
+    plot: bool = True,
+    takeaway: str | None = None,
+    data_name: str = "custom_panel",
+) -> Dict[str, Any]:
+    payload = _run_panel_data_impl(
+        df,
+        dataset_id=data_name,
+        source="dataframe",
+        unit_col=unit_col,
+        time_col=time_col,
+        y_col=y_col,
+        treated_unit=treated_unit,
+        intervention_t=intervention_t,
+        model=model,
+        output_dir=output_dir,
+        placebo_pre_rmspe_factor=placebo_pre_rmspe_factor,
+        min_pre_periods=min_pre_periods,
+        max_time_placebos=max_time_placebos,
+        title=title,
+        plot=plot,
+        takeaway=takeaway,
+    )
+    return {
+        "kind": "panel_data_run",
+        "data_name": data_name,
+        **payload,
+    }
+
+
+def run_csv_panel(
+    csv_path: str | Path,
+    *,
+    unit_col: str,
+    time_col: str,
+    y_col: str,
+    treated_unit: Any,
+    intervention_t: Any,
+    model: str = "simple_scm",
+    output_dir: str | Path = "tscfbench_csv_panel",
+    placebo_pre_rmspe_factor: float = 5.0,
+    min_pre_periods: int = 12,
+    max_time_placebos: int = 8,
+    title: str | None = None,
+    plot: bool = True,
+    takeaway: str | None = None,
+) -> Dict[str, Any]:
+    path = Path(csv_path)
+    payload = _run_panel_data_impl(
+        _read_csv(path),
+        dataset_id=path.stem,
+        source=str(path),
+        unit_col=unit_col,
+        time_col=time_col,
+        y_col=y_col,
+        treated_unit=treated_unit,
+        intervention_t=intervention_t,
+        model=model,
+        output_dir=output_dir,
+        placebo_pre_rmspe_factor=placebo_pre_rmspe_factor,
+        min_pre_periods=min_pre_periods,
+        max_time_placebos=max_time_placebos,
+        title=title,
+        plot=plot,
+        takeaway=takeaway,
+    )
+    return {
+        "kind": "csv_panel_run",
+        "csv_path": str(path),
+        **payload,
+    }
+
+
+def _run_impact_data_impl(
+    df: pd.DataFrame,
+    *,
+    dataset_id: str,
+    source: str,
+    time_col: str,
+    y_col: str,
+    x_cols: Sequence[str],
+    intervention_t: Any,
+    model: str,
+    output_dir: str | Path,
+    title: str | None,
+    plot: bool,
+    takeaway: str | None,
+) -> Dict[str, Any]:
+    out_dir = Path(output_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df = _maybe_parse_time(df.copy(), time_col)
+    intervention = _coerce_intervention(df, time_col, intervention_t)
+    case = ImpactCase(
+        df=df,
+        time_col=time_col,
+        y_col=y_col,
+        x_cols=list(x_cols),
+        intervention_t=intervention,
+        metadata={"dataset_id": dataset_id, "source": source},
+    )
+    fitted = materialize_model(model)
+    out = benchmark(case, fitted)
+    metrics_json = out_dir / "impact_metrics.json"
+    report_md = out_dir / "impact_report.md"
+    prediction_csv = out_dir / "impact_prediction_frame.csv"
+    report_md.write_text(
+        _impact_report(case, getattr(fitted, "name", model), out.metrics, scenario=title or dataset_id),
+        encoding="utf-8",
+    )
+    metrics_json.write_text(
+        json.dumps({"metrics": out.metrics, "metadata": out.prediction.meta}, indent=2, ensure_ascii=False, default=str),
+        encoding="utf-8",
+    )
+    pred_df = out.prediction.to_frame(case.t, case.y_obs, intervention_index=case.intervention_index)
+    pred_df.to_csv(prediction_csv, index=False)
+    artifacts = {
+        "metrics_json": str(metrics_json),
+        "report_md": str(report_md),
+        "prediction_csv": str(prediction_csv),
+    }
+    if plot:
+        visuals = write_impact_visual_bundle(
+            case,
+            out,
+            output_dir=out_dir,
+            stem="impact",
+            title=title or f"{dataset_id}: observed vs counterfactual",
+            ylabel=y_col,
+            takeaway=takeaway,
+        )
+        artifacts.update(visuals)
+    summary = _compact_summary(
+        {
+            "intervention_t": str(intervention),
+            "model": model,
+            "controls": len(list(x_cols)),
+            "post_period_points": int(case.post_mask.sum()),
+            "avg_effect": out.metrics.get("avg_effect"),
+            "avg_abs_effect": out.metrics.get("avg_abs_effect"),
+            "cum_effect": out.metrics.get("cum_effect"),
+            "max_abs_effect": out.metrics.get("max_abs_effect"),
+            "rmse": out.metrics.get("rmse"),
+            "cum_mae": out.metrics.get("cum_mae"),
+            "coverage": out.metrics.get("coverage"),
+        }
+    )
+    return {
+        "output_dir": str(out_dir),
+        "summary": summary,
+        "generated_files": artifacts,
+        "next_command": "python -m tscfbench doctor",
+        "data_source": source,
+    }
+
+
+def run_impact_data(
+    df: pd.DataFrame,
+    *,
+    time_col: str,
+    y_col: str,
+    x_cols: Sequence[str],
+    intervention_t: Any,
+    model: str = "ols_impact",
+    output_dir: str | Path = "tscfbench_impact_run",
+    title: str | None = None,
+    plot: bool = True,
+    takeaway: str | None = None,
+    data_name: str = "custom_impact",
+) -> Dict[str, Any]:
+    payload = _run_impact_data_impl(
+        df,
+        dataset_id=data_name,
+        source="dataframe",
+        time_col=time_col,
+        y_col=y_col,
+        x_cols=x_cols,
+        intervention_t=intervention_t,
+        model=model,
+        output_dir=output_dir,
+        title=title,
+        plot=plot,
+        takeaway=takeaway,
+    )
+    return {
+        "kind": "impact_data_run",
+        "data_name": data_name,
+        **payload,
+    }
 
 
 def run_csv_impact(
@@ -190,67 +398,31 @@ def run_csv_impact(
     plot: bool = True,
     takeaway: str | None = None,
 ) -> Dict[str, Any]:
-    out_dir = Path(output_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    df = _maybe_parse_time(_read_csv(csv_path), time_col)
-    intervention = _coerce_intervention(df, time_col, intervention_t)
-    case = ImpactCase(
-        df=df,
+    path = Path(csv_path)
+    payload = _run_impact_data_impl(
+        _read_csv(path),
+        dataset_id=path.stem,
+        source=str(path),
         time_col=time_col,
         y_col=y_col,
-        x_cols=list(x_cols),
-        intervention_t=intervention,
-        metadata={"dataset_id": Path(csv_path).stem, "source": str(csv_path)},
+        x_cols=x_cols,
+        intervention_t=intervention_t,
+        model=model,
+        output_dir=output_dir,
+        title=title,
+        plot=plot,
+        takeaway=takeaway,
     )
-    fitted = materialize_model(model)
-    out = benchmark(case, fitted)
-    metrics_json = out_dir / "impact_metrics.json"
-    report_md = out_dir / "impact_report.md"
-    prediction_csv = out_dir / "impact_prediction_frame.csv"
-    report_md.write_text(_impact_report(case, getattr(fitted, "name", model), out.metrics, scenario=title or Path(csv_path).stem), encoding="utf-8")
-    metrics_json.write_text(json.dumps({"metrics": out.metrics, "metadata": out.prediction.meta}, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    pred_df = out.prediction.to_frame(case.t, case.y_obs, intervention_index=case.intervention_index)
-    pred_df.to_csv(prediction_csv, index=False)
-    artifacts = {
-        "metrics_json": str(metrics_json),
-        "report_md": str(report_md),
-        "prediction_csv": str(prediction_csv),
-    }
-    if plot:
-        visuals = write_impact_visual_bundle(
-            case,
-            out,
-            output_dir=out_dir,
-            stem="impact",
-            title=title or f"{Path(csv_path).stem}: observed vs counterfactual",
-            ylabel=y_col,
-            takeaway=takeaway,
-        )
-        artifacts.update(visuals)
-    summary = _compact_summary({
-        "intervention_t": str(intervention),
-        "model": model,
-        "controls": len(list(x_cols)),
-        "post_period_points": int(case.post_mask.sum()),
-        "avg_effect": out.metrics.get("avg_effect"),
-        "avg_abs_effect": out.metrics.get("avg_abs_effect"),
-        "cum_effect": out.metrics.get("cum_effect"),
-        "max_abs_effect": out.metrics.get("max_abs_effect"),
-        "rmse": out.metrics.get("rmse"),
-        "cum_mae": out.metrics.get("cum_mae"),
-        "coverage": out.metrics.get("coverage"),
-    })
     return {
         "kind": "csv_impact_run",
-        "csv_path": str(csv_path),
-        "output_dir": str(out_dir),
-        "summary": summary,
-        "generated_files": artifacts,
-        "next_command": "python -m tscfbench doctor",
+        "csv_path": str(path),
+        **payload,
     }
 
 
 __all__ = [
+    "run_panel_data",
+    "run_impact_data",
     "run_csv_panel",
     "run_csv_impact",
 ]

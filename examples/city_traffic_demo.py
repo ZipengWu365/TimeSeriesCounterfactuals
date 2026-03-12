@@ -1,4 +1,9 @@
-from tscfbench.demo_cases import run_demo
+from pprint import pprint
 
-if __name__ == '__main__':
-    print(run_demo('city-traffic', output_dir='demo_outputs', plot=True))
+from tscfbench import run_demo
+
+
+if __name__ == "__main__":
+    result = run_demo("city-traffic", output_dir="demo_outputs", plot=True)
+    pprint(result["summary"])
+    print(result["generated_files"]["report_md"])

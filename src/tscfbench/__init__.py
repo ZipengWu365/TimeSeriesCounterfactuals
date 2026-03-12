@@ -106,10 +106,11 @@ from .demo_cases import (
     demo_catalog,
     demo_data_path,
     get_demo_case,
+    load_demo_data,
     render_demo_gallery_markdown,
     run_demo,
 )
-from .csv_runner import run_csv_impact, run_csv_panel
+from .csv_runner import run_csv_impact, run_csv_panel, run_impact_data, run_panel_data
 from .visuals import write_impact_visual_bundle, write_panel_visual_bundle
 from .share_packages import make_share_package_for_demo, make_share_package_from_run
 from .positioning import (
@@ -224,8 +225,11 @@ __all__ = [
     "demo_catalog",
     "demo_data_path",
     "get_demo_case",
+    "load_demo_data",
     "render_demo_gallery_markdown",
     "run_demo",
+    "run_panel_data",
+    "run_impact_data",
     "run_csv_impact",
     "run_csv_panel",
     "write_impact_visual_bundle",

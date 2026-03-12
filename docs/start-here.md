@@ -6,34 +6,57 @@ In plain language: give the package one treated series or one treated unit, and 
 
 ## If you only do one thing
 
-Run the narrow first-run path. It uses built-in models only, bundled snapshots, and avoids optional dependencies.
+Start from Python so the package looks like a library rather than a terminal wrapper.
+
+```python
+from tscfbench import run_demo
+
+result = run_demo("city-traffic", output_dir="city_traffic_run")
+result["summary"]
+```
+
+That is the cleanest first contact: import, run, inspect the summary, then open the generated chart and report.
+
+If you want a fresh-environment smoke test after that, the CLI quickstart still works:
 
 ```bash
 python -m tscfbench quickstart
 ```
 
-That command writes a spec, results JSON, report, next-steps file, and—when plotting support is available—a shareable chart into `tscfbench_quickstart/`.
+That command writes a spec, results JSON, report, next-steps file, and, when plotting support is available, a shareable chart into `tscfbench_quickstart/`.
 
 ## If you want a more human, domain-first example
 
 Start with one of the cross-disciplinary demos. They are easier to read if words like placebo, donor pool, or synthetic control are still unfamiliar.
 
-```bash
-python -m tscfbench demo city-traffic
-python -m tscfbench demo product-launch
-python -m tscfbench demo heatwave-health
+```python
+from tscfbench import run_demo
+
+run_demo("city-traffic", output_dir="city_traffic_run")
+run_demo("product-launch", output_dir="product_launch_run")
+run_demo("heatwave-health", output_dir="heatwave_health_run")
 ```
 
 ## If you already have your own CSV
 
-Skip the demos and go straight to the CSV runners.
+Use the DataFrame-friendly helpers first.
 
-```bash
-python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
-python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
+```python
+import pandas as pd
+from tscfbench import run_panel_data
+
+df = pd.read_csv("my_panel.csv")
+result = run_panel_data(
+    df,
+    unit_col="city",
+    time_col="date",
+    y_col="traffic_index",
+    treated_unit="Harbor City",
+    intervention_t="2024-03-06",
+)
 ```
 
-Read [`docs/bring-your-own-data.md`](bring-your-own-data.md) if you want the exact CSV shape before you run anything.
+Read [`bring-your-own-data.md`](bring-your-own-data.md) if you want both the Python and CLI shapes side by side.
 
 ## What should you do after that?
 

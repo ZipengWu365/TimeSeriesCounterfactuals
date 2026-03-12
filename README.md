@@ -4,6 +4,8 @@
 
 <h1 align="center">tscfbench (v1.8.0)</h1>
 
+# tscfbench (v1.8.0)
+
 <p align="center">
   <strong>Zipeng Wu</strong><br>
   The University of Birmingham<br>
@@ -30,6 +32,17 @@
 
 `tscfbench` is for the moment when a raw estimator is not enough: you want a chart, a report, a shareable package, and a machine-readable handoff under one reproducible spec.
 
+## Python-first quickstart
+
+```python
+from tscfbench import run_demo
+
+result = run_demo("city-traffic", output_dir="city_traffic_run")
+result["summary"]
+```
+
+This is the shortest human-facing path: import the package, run one function, and inspect the summary while charts and reports are written to `city_traffic_run/`.
+
 ## When to use this instead of a single estimator package
 
 | If you need... | Use... |
@@ -38,7 +51,7 @@
 | One workflow surface across panel studies, event-style impact studies, demos, reports, and agent handoffs | `tscfbench` |
 | Something you can show a colleague or post online, not just model output | `tscfbench` |
 
-## 60-second quickstart
+## CLI quickstart
 
 ```bash
 python -m pip install -e ".[starter]"
@@ -46,7 +59,7 @@ python -m tscfbench quickstart
 python -m tscfbench doctor
 ```
 
-That path is the single recommended onboarding path in v1.8: built-in backends, bundled snapshot data, clean report generation in a fresh environment, and immediate chart/report/share assets.
+That path is the single recommended onboarding path when you want a fresh-environment smoke test with built-in backends, bundled snapshot data, and immediate chart/report/share assets.
 
 If you are installing from a release asset instead of a source checkout:
 
@@ -59,25 +72,63 @@ PyPI-first installation is prepared in this release, but the package is not publ
 
 ## Use your own data
 
-You do not need to start from the bundled demos. There are two direct CSV entry points:
+You do not need to start from the bundled demos. The Python-facing entry points are:
 
-### If you have panel data: one treated unit plus comparison units
+- `run_panel_data`: one treated unit plus comparison units over time
+- `run_impact_data`: one treated series plus one or more aligned control series
 
-Expected columns: one unit column, one time column, one outcome column.
+### Panel data: one treated unit plus donor pool
+
+```python
+import pandas as pd
+from tscfbench import run_panel_data
+
+df = pd.read_csv("my_panel.csv")
+result = run_panel_data(
+    df,
+    unit_col="city",
+    time_col="date",
+    y_col="traffic_index",
+    treated_unit="Harbor City",
+    intervention_t="2024-03-06",
+    output_dir="my_panel_run",
+)
+
+result["summary"]
+```
+
+CLI equivalent:
 
 ```bash
 python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
 ```
 
-### If you have one treated series plus control series
+### Impact data: one treated series plus controls
 
-Expected columns: one time column, one outcome column, and one or more control columns.
+```python
+import pandas as pd
+from tscfbench import run_impact_data
+
+df = pd.read_csv("my_impact.csv")
+result = run_impact_data(
+    df,
+    time_col="date",
+    y_col="signups",
+    x_cols=["peer_signups", "search_interest"],
+    intervention_t="2024-04-23",
+    output_dir="my_impact_run",
+)
+
+result["summary"]
+```
+
+CLI equivalent:
 
 ```bash
 python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
 ```
 
-Both commands write a prediction frame, metrics JSON, Markdown report, and chart assets into the output directory you choose.
+Both routes write a prediction frame, metrics JSON, Markdown report, and chart assets into the output directory you choose.
 
 For the full guide, see [`docs/bring-your-own-data.md`](docs/bring-your-own-data.md).
 

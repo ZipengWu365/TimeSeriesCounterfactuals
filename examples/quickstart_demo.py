@@ -1,4 +1,8 @@
-from tscfbench.onramp import run_quickstart
+from pprint import pprint
 
-if __name__ == '__main__':
-    print(run_quickstart('tscfbench_quickstart'))
+from tscfbench import run_demo
+
+
+if __name__ == "__main__":
+    result = run_demo("city-traffic", output_dir="tscfbench_quickstart_demo")
+    pprint(result["summary"])

@@ -2,10 +2,12 @@
 
 If you already have a CSV, start here instead of the demo gallery.
 
-`tscfbench` has two direct entry points for real data:
+`tscfbench` now has two direct Python entry points for real data:
 
-- `run-csv-panel`: one treated unit plus comparison units over time
-- `run-csv-impact`: one treated series plus one or more control series
+- `run_panel_data`: one treated unit plus comparison units over time
+- `run_impact_data`: one treated series plus one or more control series
+
+CLI wrappers still exist as `run-csv-panel` and `run-csv-impact`, but the docs lead with Python because this page is for users, not agents.
 
 ## 1. Panel data: one treated unit plus donor pool
 
@@ -28,16 +30,30 @@ Required columns:
 - one time column such as `date` or `year`
 - one outcome column such as `traffic_index` or `employment_index`
 
-Run it:
+Run it in Python:
+
+```python
+import pandas as pd
+from tscfbench import run_panel_data
+
+df = pd.read_csv("my_panel.csv")
+result = run_panel_data(
+    df,
+    unit_col="city",
+    time_col="date",
+    y_col="traffic_index",
+    treated_unit="Harbor City",
+    intervention_t="2024-03-06",
+    output_dir="my_panel_run",
+)
+
+result["summary"]
+```
+
+CLI equivalent:
 
 ```bash
-python -m tscfbench run-csv-panel my_panel.csv \
-  --unit-col city \
-  --time-col date \
-  --y-col traffic_index \
-  --treated-unit "Harbor City" \
-  --intervention-t 2024-03-06 \
-  --output my_panel_run
+python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
 ```
 
 That writes:
@@ -68,15 +84,29 @@ Required columns:
 - one outcome column
 - one or more control columns
 
-Run it:
+Run it in Python:
+
+```python
+import pandas as pd
+from tscfbench import run_impact_data
+
+df = pd.read_csv("my_impact.csv")
+result = run_impact_data(
+    df,
+    time_col="date",
+    y_col="signups",
+    x_cols=["peer_signups", "search_interest"],
+    intervention_t="2024-04-23",
+    output_dir="my_impact_run",
+)
+
+result["summary"]
+```
+
+CLI equivalent:
 
 ```bash
-python -m tscfbench run-csv-impact my_impact.csv \
-  --time-col date \
-  --y-col signups \
-  --x-cols peer_signups search_interest \
-  --intervention-t 2024-04-23 \
-  --output my_impact_run
+python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
 ```
 
 That writes:
@@ -89,17 +119,15 @@ That writes:
 
 ## 3. How to choose between the two
 
-- Use `run-csv-panel` when your data is naturally `unit x time`
-- Use `run-csv-impact` when your data is one treated series with control columns already aligned by time
+- Use `run_panel_data` when your data is naturally `unit x time`
+- Use `run_impact_data` when your data is one treated series with control columns already aligned by time
 
 ## 4. Time column and intervention format
 
 - `date` columns can be normal date strings such as `2024-07-14`
 - integer-like time columns such as `year` also work
-- `--intervention-t` should match one value in your time column
+- `intervention_t` should match one value in your time column
 
-## 5. If you prefer Python instead of CLI
+## 5. If you still prefer CLI
 
-There is already a panel tutorial at [`docs/tutorials/custom-panel-workflow.md`](tutorials/custom-panel-workflow.md).
-
-If the CLI path works, switch to Python only when you want to customize the workflow, not for the first successful run.
+Use `run-csv-panel` or `run-csv-impact` when you want copy-paste terminal commands, CI jobs, or shell scripts. They are thin wrappers around the same workflow.

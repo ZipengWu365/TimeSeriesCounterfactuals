@@ -5,6 +5,8 @@ from importlib import resources
 from pathlib import Path
 from typing import Any, Dict, List
 
+import pandas as pd
+
 from tscfbench.csv_runner import run_csv_impact, run_csv_panel
 
 
@@ -98,6 +100,9 @@ def demo_data_path(demo_id: str) -> Path:
     data_root = resources.files("tscfbench.datasets").joinpath("data")
     return Path(str(data_root.joinpath(demo.dataset_file)))
 
+def load_demo_data(demo_id: str) -> pd.DataFrame:
+    return pd.read_csv(demo_data_path(demo_id))
+
 def run_demo(demo_id: str, *, output_dir: str | Path = "tscfbench_demo", plot: bool = True) -> Dict[str, Any]:
     demo = get_demo_case(demo_id)
     csv_path = demo_data_path(demo.id)
@@ -132,4 +137,4 @@ def render_demo_gallery_markdown() -> str:
         lines.extend([f"### {demo.title}", "", f"- family: `{demo.family}`", f"- domain: `{demo.domain}`", f"- question: {demo.question}", f"- dataset file: `{demo.dataset_file}`", f"- beginner_friendly: `{demo.beginner_friendly}`", f"- public_interest: `{demo.public_interest}`", "", "```bash", f"python -m tscfbench demo {demo.id}", "```", ""])
     return "\n".join(lines)
 
-__all__ = ["DemoCase", "beginner_examples", "demo_catalog", "demo_data_path", "get_demo_case", "render_demo_gallery_markdown", "run_demo"]
+__all__ = ["DemoCase", "beginner_examples", "demo_catalog", "demo_data_path", "get_demo_case", "load_demo_data", "render_demo_gallery_markdown", "run_demo"]

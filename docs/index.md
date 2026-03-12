@@ -6,7 +6,40 @@
 
 This package is easiest to understand as a **counterfactual workflow product**: it helps you go from a question to a chart, a report, and a handoff artifact without inventing a one-off workflow every time.
 
-## First minute
+## Start in Python
+
+```python
+from tscfbench import run_demo
+
+result = run_demo("city-traffic", output_dir="city_traffic_run")
+result["summary"]
+```
+
+This is the shortest human-facing example: import the package, run one function, and open the generated chart/report assets in `city_traffic_run/`.
+
+## Bring your own data in Python
+
+```python
+import pandas as pd
+from tscfbench import run_panel_data
+
+df = pd.read_csv("my_panel.csv")
+result = run_panel_data(
+    df,
+    unit_col="city",
+    time_col="date",
+    y_col="traffic_index",
+    treated_unit="Harbor City",
+    intervention_t="2024-03-06",
+    output_dir="my_panel_run",
+)
+
+result["summary"]
+```
+
+If your question is one treated series with controls instead of one treated unit with donor units, switch to `run_impact_data`. The full walkthrough is [Bring your own data](bring-your-own-data.md).
+
+## CLI quickstart
 
 ```bash
 python -m pip install -e ".[starter]"
@@ -14,7 +47,7 @@ python -m tscfbench quickstart
 python -m tscfbench doctor
 ```
 
-The starter extra is the single recommended onboarding path. A release wheel is bundled with the release assets, and the package metadata is ready for PyPI publication once you push a live release.
+Use the CLI when you want the narrow install smoke test in a fresh environment.
 
 ## Why not just install one estimator?
 
@@ -27,13 +60,9 @@ The starter extra is the single recommended onboarding path. A release wheel is 
 ### I want the fastest possible first result
 
 - [Quickstart](quickstart.md)
+- [Bring your own data](bring-your-own-data.md)
 - [Essential commands](essential-commands.md)
 - [Doctor](doctor.md)
-
-### I want to run my own data right now
-
-- [Bring your own data](bring-your-own-data.md)
-- [Custom panel workflow](tutorials/custom-panel-workflow.md)
 
 ### I want a demo I can show another person
 
