@@ -126,6 +126,10 @@ def make_share_package_from_run(
         _first_existing(generated_files, ["treated_vs_counterfactual_png", "treated_vs_counterfactual_svg"]),
         out / ("treated_vs_counterfactual.png" if generated_files.get("treated_vs_counterfactual_png") else "treated_vs_counterfactual.svg"),
     )
+    paths["point_effect"] = _copy_if_exists(
+        _first_existing(generated_files, ["point_effect_png", "point_effect_svg"]),
+        out / ("point_effect.png" if generated_files.get("point_effect_png") else "point_effect.svg"),
+    )
     paths["cumulative_impact"] = _copy_if_exists(
         _first_existing(generated_files, ["cumulative_impact_png", "cumulative_impact_svg"]),
         out / ("cumulative_impact.png" if generated_files.get("cumulative_impact_png") else "cumulative_impact.svg"),

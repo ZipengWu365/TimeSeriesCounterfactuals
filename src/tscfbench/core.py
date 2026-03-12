@@ -268,24 +268,59 @@ class PredictionResult:
     y_cf_upper: Optional[np.ndarray] = None
     meta: Dict[str, Any] = field(default_factory=dict)
 
-    def effect(self, y_obs: np.ndarray) -> np.ndarray:
-        return np.asarray(y_obs, dtype=float) - np.asarray(self.y_cf_mean, dtype=float)
+    def effect(self, y_obs: np.ndarray, intervention_index: Optional[int] = None) -> np.ndarray:
+        effect = np.asarray(y_obs, dtype=float) - np.asarray(self.y_cf_mean, dtype=float)
+        if intervention_index is None:
+            return effect
+        out = effect.astype(float).copy()
+        out[: int(intervention_index)] = np.nan
+        return out
 
-    def cumulative_effect(self, y_obs: np.ndarray) -> np.ndarray:
-        return np.cumsum(self.effect(y_obs))
+    def cumulative_effect(self, y_obs: np.ndarray, intervention_index: Optional[int] = None) -> np.ndarray:
+        effect = np.asarray(y_obs, dtype=float) - np.asarray(self.y_cf_mean, dtype=float)
+        if intervention_index is None:
+            return np.cumsum(effect)
+        idx = int(intervention_index)
+        out = np.full_like(effect, np.nan, dtype=float)
+        out[idx:] = np.cumsum(effect[idx:])
+        return out
 
-    def to_frame(self, t: Sequence[Any], y_obs: np.ndarray) -> pd.DataFrame:
+    def to_frame(self, t: Sequence[Any], y_obs: np.ndarray, intervention_index: Optional[int] = None) -> pd.DataFrame:
         y_obs = np.asarray(y_obs, dtype=float)
         y_cf = np.asarray(self.y_cf_mean, dtype=float)
+        effect = self.effect(y_obs, intervention_index=intervention_index)
+        cumulative = self.cumulative_effect(y_obs, intervention_index=intervention_index)
         df = pd.DataFrame({
             "t": np.asarray(t),
             "y_obs": y_obs,
             "y_cf_mean": y_cf,
-            "effect": y_obs - y_cf,
-            "cumulative_effect": np.cumsum(y_obs - y_cf),
+            "effect": effect,
+            "cumulative_effect": cumulative,
         })
         if self.y_cf_lower is not None:
-            df["y_cf_lower"] = np.asarray(self.y_cf_lower, dtype=float)
+            lower = np.asarray(self.y_cf_lower, dtype=float)
+            df["y_cf_lower"] = lower
         if self.y_cf_upper is not None:
-            df["y_cf_upper"] = np.asarray(self.y_cf_upper, dtype=float)
+            upper = np.asarray(self.y_cf_upper, dtype=float)
+            df["y_cf_upper"] = upper
+        if self.y_cf_lower is not None and self.y_cf_upper is not None:
+            effect_lower = y_obs - np.asarray(self.y_cf_upper, dtype=float)
+            effect_upper = y_obs - np.asarray(self.y_cf_lower, dtype=float)
+            if intervention_index is not None:
+                idx = int(intervention_index)
+                effect_lower = effect_lower.astype(float).copy()
+                effect_upper = effect_upper.astype(float).copy()
+                effect_lower[:idx] = np.nan
+                effect_upper[:idx] = np.nan
+                cumulative_lower = np.full_like(effect_lower, np.nan, dtype=float)
+                cumulative_upper = np.full_like(effect_upper, np.nan, dtype=float)
+                cumulative_lower[idx:] = np.cumsum(effect_lower[idx:])
+                cumulative_upper[idx:] = np.cumsum(effect_upper[idx:])
+            else:
+                cumulative_lower = np.cumsum(effect_lower)
+                cumulative_upper = np.cumsum(effect_upper)
+            df["effect_lower"] = effect_lower
+            df["effect_upper"] = effect_upper
+            df["cumulative_effect_lower"] = cumulative_lower
+            df["cumulative_effect_upper"] = cumulative_upper
         return df

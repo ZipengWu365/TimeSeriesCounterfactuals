@@ -138,7 +138,7 @@ def run_csv_panel(
     prediction_csv = out_dir / "panel_prediction_frame.csv"
     report_md.write_text(render_panel_markdown(case, report), encoding="utf-8")
     metrics_json.write_text(json.dumps({"metrics": report.metrics, "metadata": report.metadata}, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    pred_df = report.prediction.to_frame(case.times, case.treated_series())
+    pred_df = report.prediction.to_frame(case.times, case.treated_series(), intervention_index=case.intervention_index)
     pred_df.to_csv(prediction_csv, index=False)
     artifacts = {
         "metrics_json": str(metrics_json),
@@ -209,7 +209,7 @@ def run_csv_impact(
     prediction_csv = out_dir / "impact_prediction_frame.csv"
     report_md.write_text(_impact_report(case, getattr(fitted, "name", model), out.metrics, scenario=title or Path(csv_path).stem), encoding="utf-8")
     metrics_json.write_text(json.dumps({"metrics": out.metrics, "metadata": out.prediction.meta}, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
-    pred_df = out.prediction.to_frame(case.t, case.y_obs)
+    pred_df = out.prediction.to_frame(case.t, case.y_obs, intervention_index=case.intervention_index)
     pred_df.to_csv(prediction_csv, index=False)
     artifacts = {
         "metrics_json": str(metrics_json),
