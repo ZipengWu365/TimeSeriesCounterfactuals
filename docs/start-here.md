@@ -24,6 +24,17 @@ python -m tscfbench demo product-launch
 python -m tscfbench demo heatwave-health
 ```
 
+## If you already have your own CSV
+
+Skip the demos and go straight to the CSV runners.
+
+```bash
+python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
+python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
+```
+
+Read [`docs/bring-your-own-data.md`](bring-your-own-data.md) if you want the exact CSV shape before you run anything.
+
 ## What should you do after that?
 
 The default recommendation starts with package orientation and then moves into a canonical benchmark, because that is the lowest-friction path for most new users.

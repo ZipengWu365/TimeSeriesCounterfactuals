@@ -30,6 +30,11 @@ The starter extra is the single recommended onboarding path. A release wheel is 
 - [Essential commands](essential-commands.md)
 - [Doctor](doctor.md)
 
+### I want to run my own data right now
+
+- [Bring your own data](bring-your-own-data.md)
+- [Custom panel workflow](tutorials/custom-panel-workflow.md)
+
 ### I want a demo I can show another person
 
 - [Demo gallery](demo-gallery.md)

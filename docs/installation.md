@@ -26,3 +26,7 @@ python -m tscfbench quickstart
 ## PyPI-ready note
 
 The project metadata in this release is prepared for `pip install tscfbench[starter]`, but this artifact snapshot is not actually published to PyPI from the current environment.
+
+## If you are installing this for your own CSV
+
+After installation, start with [`bring-your-own-data.md`](bring-your-own-data.md) instead of the demo gallery.

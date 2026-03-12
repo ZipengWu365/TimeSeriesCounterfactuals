@@ -57,6 +57,30 @@ python -m tscfbench quickstart
 
 PyPI-first installation is prepared in this release, but the package is not published to PyPI from this environment.
 
+## Use your own data
+
+You do not need to start from the bundled demos. There are two direct CSV entry points:
+
+### If you have panel data: one treated unit plus comparison units
+
+Expected columns: one unit column, one time column, one outcome column.
+
+```bash
+python -m tscfbench run-csv-panel my_panel.csv --unit-col city --time-col date --y-col traffic_index --treated-unit "Harbor City" --intervention-t 2024-03-06 --output my_panel_run
+```
+
+### If you have one treated series plus control series
+
+Expected columns: one time column, one outcome column, and one or more control columns.
+
+```bash
+python -m tscfbench run-csv-impact my_impact.csv --time-col date --y-col signups --x-cols peer_signups search_interest --intervention-t 2024-04-23 --output my_impact_run
+```
+
+Both commands write a prediction frame, metrics JSON, Markdown report, and chart assets into the output directory you choose.
+
+For the full guide, see [`docs/bring-your-own-data.md`](docs/bring-your-own-data.md).
+
 ## What you get on the first run
 
 - A canonical study spec and results JSON.

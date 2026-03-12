@@ -5,62 +5,57 @@ repo_url: https://github.com/ZipengWu365/TimeSeriesCounterfactuals
 repo_name: ZipengWu365/TimeSeriesCounterfactuals
 nav:
   - Home: index.md
-  - Quickstart: quickstart.md
-  - Demo gallery: demo-gallery.md
-  - Try now: try-now.md
-  - Plain-language guide: plain-language-guide.md
-  - Showcase gallery: showcase-gallery.md
-  - Start here: start-here.md
-  - Essential commands: essential-commands.md
-  - Tool profiles: tool-profiles.md
-  - Doctor: doctor.md
-  - Installation: installation.md
-  - Package story: package-story.md
-  - Why tscfbench?: why-tscfbench.md
-  - Ecosystem audit: ecosystem-audit.md
-  - Feature coverage: feature-coverage.md
-  - Agent-first design: agent-first-design.md
-  - GitHub README: github-readme.md
-  - Capability map: capability-map.md
-  - API atlas: api-atlas.md
-  - Scenario matrix: scenario-matrix.md
-  - Tutorial index: tutorial-index.md
-  - What is tscfbench?: what-is-tscfbench.md
-  - API handbook: api-handbook.md
-  - Use cases: use-cases.md
-  - Workflow recipes: workflow-recipes.md
-  - Benchmark cards: benchmark-cards.md
-  - High-traffic cases: high-traffic-cases.md
-  - Public data sources: public-data-sources.md
-  - Environment guide: environments.md
-  - CLI guide: cli-guide.md
-  - Benchmark protocol: benchmark-protocol.md
-  - Tutorials:
-      - First benchmark: tutorials/first-benchmark.md
-      - Bring your own panel data: tutorials/custom-panel-workflow.md
-      - Agent workflows: tutorials/agent-workflows.md
-      - City traffic: tutorials/city-traffic.md
-      - Product launch: tutorials/product-launch.md
-      - Heatwave health: tutorials/heatwave-health.md
-      - Electricity shock: tutorials/electricity-shock.md
-      - Climate grid: tutorials/climate-grid.md
-      - Detector downtime: tutorials/detector-downtime.md
-      - Minimum-wage employment: tutorials/minimum-wage-employment.md
-      - Viral attention: tutorials/viral-attention.md
-      - Hospital surge: tutorials/hospital-surge.md
-      - Repo breakout: tutorials/repo-breakout.md
-      - Notebook tour: tutorials/notebooks.md
-      - GitHub stars event study: tutorials/github-stars-impact.md
-      - Crypto event impact: tutorials/crypto-event-impact.md
-      - Commodities event impact: tutorials/commodities-event-impact.md
-  - Case studies:
-      - Germany: case-studies/germany.md
-      - Prop99: case-studies/prop99.md
-      - Basque: case-studies/basque.md
-  - Release playbook: release-playbook.md
-  - Adoption playbook: adoption-playbook.md
-  - Feedback changes: feedback-changes.md
-  - FAQ: faq.md
+  - Start:
+      - Quickstart: quickstart.md
+      - Bring your own data: bring-your-own-data.md
+      - Start here: start-here.md
+      - Try now: try-now.md
+      - Installation: installation.md
+      - Doctor: doctor.md
+  - Examples:
+      - Demo gallery: demo-gallery.md
+      - Tutorial index: tutorial-index.md
+      - Tutorials:
+          - First benchmark: tutorials/first-benchmark.md
+          - Bring your own panel data: tutorials/custom-panel-workflow.md
+          - Agent workflows: tutorials/agent-workflows.md
+          - City traffic: tutorials/city-traffic.md
+          - Product launch: tutorials/product-launch.md
+          - Heatwave health: tutorials/heatwave-health.md
+          - Electricity shock: tutorials/electricity-shock.md
+          - Climate grid: tutorials/climate-grid.md
+          - Detector downtime: tutorials/detector-downtime.md
+          - Minimum-wage employment: tutorials/minimum-wage-employment.md
+          - Viral attention: tutorials/viral-attention.md
+          - Hospital surge: tutorials/hospital-surge.md
+          - Repo breakout: tutorials/repo-breakout.md
+          - Notebook tour: tutorials/notebooks.md
+          - GitHub stars event study: tutorials/github-stars-impact.md
+          - Crypto event impact: tutorials/crypto-event-impact.md
+          - Commodities event impact: tutorials/commodities-event-impact.md
+      - Case studies:
+          - Germany: case-studies/germany.md
+          - Prop99: case-studies/prop99.md
+          - Basque: case-studies/basque.md
+  - Guides:
+      - Plain-language guide: plain-language-guide.md
+      - Tool profiles: tool-profiles.md
+      - CLI guide: cli-guide.md
+      - FAQ: faq.md
+  - Reference:
+      - API atlas: api-atlas.md
+      - API handbook: api-handbook.md
+      - Scenario matrix: scenario-matrix.md
+      - Benchmark protocol: benchmark-protocol.md
+      - Public data sources: public-data-sources.md
+  - Project:
+      - Why tscfbench?: why-tscfbench.md
+      - Package story: package-story.md
+      - Feature coverage: feature-coverage.md
+      - Agent-first design: agent-first-design.md
+      - Ecosystem audit: ecosystem-audit.md
+      - Release playbook: release-playbook.md
+      - Adoption playbook: adoption-playbook.md
 
 theme:
   name: material
